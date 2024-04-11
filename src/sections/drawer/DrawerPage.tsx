@@ -37,7 +37,6 @@ export const DrawerPage: FC = () => {
                     ),
                 }}
             />
-
         </Drawer.Navigator>
     );
 };

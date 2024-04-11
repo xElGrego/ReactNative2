@@ -20,6 +20,7 @@ export const Home: FC = () => {
                 <Button title='Crud Users' onPress={() => navigateTo('User')} />
                 <Button title='Onboarding' onPress={() => navigateTo('Onboarding')} />
                 <Button title='Drawer' onPress={() => navigateTo('Drawer')} />
+                <Button title='BottonNavPage' onPress={() => navigateTo('BottonNavPage')} />
             </View>
         </SafeAreaView>
     );

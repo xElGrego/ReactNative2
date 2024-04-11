@@ -2,7 +2,6 @@ import React from 'react';
 import { DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { WelcomePage } from "./src/sections/login/welcome";
-import "./styles.css";
 import { RootStackParamList } from './types/ListRoute';
 import { Home } from './src/home';
 import { LoginPage } from './src/sections/login/login';
@@ -12,6 +11,8 @@ import { UserPage } from './src/sections/users/user';
 import { PaperProvider } from 'react-native-paper';
 import { OnboardingPage } from './src/sections/onboarding/Onboarding';
 import { DrawerPage } from './src/sections/drawer/DrawerPage';
+import "./styles.css";
+import { BottonNavPage } from './src/sections/botton-navigation/BottonNavigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -51,6 +52,10 @@ export default function App() {
           <Stack.Screen
             name="Drawer"
             component={DrawerPage}
+          />
+          <Stack.Screen
+            name="BottonNavPage"
+            component={BottonNavPage}
           />
         </Stack.Navigator>
         <Toast />
