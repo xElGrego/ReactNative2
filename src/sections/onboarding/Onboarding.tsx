@@ -3,26 +3,46 @@ import { RootStackParamList } from "../../../types/ListRoute";
 import { SafeAreaView, TouchableOpacity, View, Text } from "react-native";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { FC } from "react";
+import { OnboardFlow } from "react-native-onboard";
+import { useNavigation } from "@react-navigation/native";
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Onboarding">;
 
-export const OnboardingPage: FC<HomeScreenProps> = (props) => {
+export const OnboardingPage: FC = () => {
+    const navigation = useNavigation();
+
+    const onDone = () => {
+        navigation.goBack();
+    }
+
     return (
-        <SafeAreaView className="flex-1 rounded-lg px-4 py-2 mt-2 w-full bg-white">
-            <View className="flex-row items-center justify-center">
-                <View className="flex-none">
-                    <TouchableOpacity
-                        onPress={() => props.navigation.goBack()}
-                        className="bg-yellow-400 p-2 rounded-tr-2xl"
-                    >
-                        <ArrowLeftIcon size="18" color="black" />
-                    </TouchableOpacity>
-                </View>
-                <View className="flex-1">
-                    <Text className="font-semibold text-2xl text-black text-center">Onboarding</Text>
-                </View>
-            </View>
-            <View className="border-b my-2 border-gray-300"></View>
-        </SafeAreaView>
+        <OnboardFlow
+            pages={[
+                {
+                    title: 'Pagina 1',
+                    subtitle: 'Lorem ipsum dolor sit amet, ',
+                    primaryButtonTitle: 'Continuar',
+                    imageUri: 'https://frigade.com/img/example1.png',
+                },
+                {
+                    title: 'Pagina 2',
+                    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ',
+                    imageUri: 'https://frigade.com/img/example2.png',
+                },
+                {
+                    title: 'Pagina 3',
+                    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ',
+                    imageUri: 'https://frigade.com/img/example2.png',
+                }
+            ]}
+            type={'fullscreen'}
+            onDone={onDone}
+            textStyle={{ fontSize: 10 }}
+            primaryButtonStyle={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 0,
+            }}
+        />
     );
 }

@@ -21,6 +21,7 @@
     "react-hook-form": "^7.51.2",
     "react-native": "0.73.6",
     "react-native-heroicons": "^4.0.0",
+    "react-native-onboard": "^2.6.0",
     "react-native-paper": "^5.12.3",
     "react-native-safe-area-context": "^4.9.0",
     "react-native-screens": "^3.30.1",
