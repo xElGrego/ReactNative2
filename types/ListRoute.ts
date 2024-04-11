@@ -6,4 +6,5 @@ export type RootStackParamList = {
     Webview: undefined;
     User: undefined;
     Onboarding: undefined;
+    Drawer: undefined;
 };

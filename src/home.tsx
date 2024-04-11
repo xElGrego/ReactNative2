@@ -1,7 +1,7 @@
 import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/ListRoute";
 import { FC } from "react";
-import { Button, View, Text, TextInput } from "react-native";
+import { Button, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,6 +19,7 @@ export const Home: FC = () => {
                 <Button title='Web View' onPress={() => navigateTo('Webview')} />
                 <Button title='Crud Users' onPress={() => navigateTo('User')} />
                 <Button title='Onboarding' onPress={() => navigateTo('Onboarding')} />
+                <Button title='Drawer' onPress={() => navigateTo('Drawer')} />
             </View>
         </SafeAreaView>
     );

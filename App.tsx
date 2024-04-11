@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { WelcomePage } from "./src/sections/login/welcome";
 import "./styles.css";
@@ -11,10 +11,12 @@ import Toast from 'react-native-toast-message';
 import { UserPage } from './src/sections/users/user';
 import { PaperProvider } from 'react-native-paper';
 import { OnboardingPage } from './src/sections/onboarding/Onboarding';
+import { DrawerPage } from './src/sections/drawer/DrawerPage';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
+
   return (
     <PaperProvider>
       <NavigationContainer>
@@ -45,6 +47,10 @@ export default function App() {
           <Stack.Screen
             name="Onboarding"
             component={OnboardingPage}
+          />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerPage}
           />
         </Stack.Navigator>
         <Toast />
