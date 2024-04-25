@@ -15,7 +15,7 @@ export const Home: FC = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
             <View style={{ flexDirection: 'column', gap: 10 }}>
-                <Button title='Login' onPress={() => navigateTo('Welcome')} />
+                <Button title='Welcome' onPress={() => navigateTo('Welcome')} />
                 <Button title='Web View' onPress={() => navigateTo('Webview')} />
                 <Button title='Crud Users' onPress={() => navigateTo('User')} />
                 <Button title='Onboarding' onPress={() => navigateTo('Onboarding')} />

@@ -8,5 +8,6 @@ export type RootStackParamList = {
     Onboarding: undefined;
     Drawer: undefined;
     BottonNavPage: undefined;
-    TabPage2: undefined
+    TabPage2: undefined;
+    ArticlePage: undefined
 };

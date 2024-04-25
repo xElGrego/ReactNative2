@@ -18,7 +18,7 @@ export const TabPage2: FC = () => {
         <SafeAreaView className="flex-1 bg-white">
             <View className="flex-1 flex justify-around my-4">
                 <Text className="text-black font-bold text-3xl text-center">
-                    TabPage2
+                    TabPage2as
                 </Text>
                 <TouchableOpacity
                     onPress={goBack}
