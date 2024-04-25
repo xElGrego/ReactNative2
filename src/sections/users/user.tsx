@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { createAsyncStorage } from "../../modules/users/infrastructure/AsyncStorageUserRepository";
+import { createUserAsyncStorage } from "../../modules/users/infrastructure/AsyncStorageUserRepository";
 import { UserContextProvider } from "./context/UserContext";
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -11,7 +11,7 @@ import { RootStackParamList } from "../../../types/ListRoute";
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "User">;
 
 export const UserPage: FC<HomeScreenProps> = (props) => {
-    const repository = createAsyncStorage();
+    const repository = createUserAsyncStorage();
     return (
         <UserContextProvider repository={repository}>
             <SafeAreaView className="flex-1 rounded-lg px-4 py-2 mt-2 w-full bg-white">

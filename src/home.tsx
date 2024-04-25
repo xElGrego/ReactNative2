@@ -21,6 +21,7 @@ export const Home: FC = () => {
                 <Button title='Onboarding' onPress={() => navigateTo('Onboarding')} />
                 <Button title='Drawer' onPress={() => navigateTo('Drawer')} />
                 <Button title='BottonNavPage' onPress={() => navigateTo('BottonNavPage')} />
+                <Button title='Shoping cart' onPress={() => navigateTo('ShopingCart')} />
             </View>
         </SafeAreaView>
     );

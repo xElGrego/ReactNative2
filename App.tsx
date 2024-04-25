@@ -13,6 +13,7 @@ import { OnboardingPage } from './src/sections/onboarding/Onboarding';
 import { DrawerPage } from './src/sections/drawer/DrawerPage';
 import "./styles.css";
 import { BottonNavPage } from './src/sections/botton-navigation/BottonNavigation';
+import { ShopingPage } from './src/sections/shopping-cart/shoping';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -56,6 +57,10 @@ export default function App() {
           <Stack.Screen
             name="BottonNavPage"
             component={BottonNavPage}
+          />
+          <Stack.Screen
+            name="ShopingCart"
+            component={ShopingPage}
           />
         </Stack.Navigator>
         <Toast />

@@ -3,7 +3,7 @@ import { User } from '../domain/User';
 import { UserRepository } from '../domain/UserRepository';
 
 
-export function createAsyncStorage(): UserRepository {
+export function createUserAsyncStorage(): UserRepository {
     return {
         saveUser,
         getAll,

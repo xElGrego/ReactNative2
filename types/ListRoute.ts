@@ -9,5 +9,6 @@ export type RootStackParamList = {
     Drawer: undefined;
     BottonNavPage: undefined;
     TabPage2: undefined;
-    ArticlePage: undefined
+    ArticlePage: undefined;
+    ShopingCart: undefined;
 };
