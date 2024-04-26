@@ -34,17 +34,12 @@ export const ShopingContextProvider = ({
         setLoading(false);
     }
 
-    useEffect(() => {
-        getProducts();
-    }, []);
 
     const updateProductQuantity = (productId: string, quantity: number) => {
         setProductQuantities(prevQuantities => ({
             ...prevQuantities,
             [productId]: quantity
         }));
-        const uniqueProducts = Object.keys(productQuantities).length + 1;
-        setCantItems(uniqueProducts);
 
         const productToAdd = products.find(product => product.idProducto.toString() === productId);
         if (productToAdd) {
@@ -64,6 +59,16 @@ export const ShopingContextProvider = ({
             prevProductsSelected.filter(selectedProduct => selectedProduct.idProducto.toString() !== productId)
         );
     };
+
+    useEffect(() => {
+        const uniqueProducts = Object.keys(productQuantities).length;
+        setCantItems(uniqueProducts);
+    }, [productQuantities]);
+
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     const storage: ContextState = {
         products,
