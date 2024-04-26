@@ -10,9 +10,8 @@ import { ShopingList } from "./components/ShopingList";
 import { FloatingButton } from "./components/FloatingButton";
 import { PagosPage } from "./screens/PagosPage";
 
-type ShopingScreenProps = NativeStackScreenProps<RootStackParamList, "ShopingCart">;
 
-export const ShopingPage: FC<ShopingScreenProps> = (props) => {
+export const ShopingPage: FC = (props: any) => {
     const repository = createShopingAsyncStorage();
     const drawer = useRef<DrawerLayoutAndroid>(null);
 
@@ -28,12 +27,12 @@ export const ShopingPage: FC<ShopingScreenProps> = (props) => {
     );
 
     return (
-        <DrawerLayoutAndroid
-            ref={drawer}
-            drawerWidth={300}
-            drawerPosition={"right"}
-            renderNavigationView={navigationView}>
-            <ShopingContextProvider repository={repository}>
+        <ShopingContextProvider repository={repository}>
+            <DrawerLayoutAndroid
+                ref={drawer}
+                drawerWidth={300}
+                drawerPosition={"right"}
+                renderNavigationView={navigationView}>
                 <SafeAreaView className="flex-1 rounded-lg px-4 py-2 mt-2 w-full bg-white">
                     <View className="flex-row items-center justify-center">
                         <View className="flex-none">
@@ -52,8 +51,9 @@ export const ShopingPage: FC<ShopingScreenProps> = (props) => {
                     <ShopingList />
                     <FloatingButton onPress={open} />
                 </SafeAreaView>
-            </ShopingContextProvider>
-        </DrawerLayoutAndroid>
+            </DrawerLayoutAndroid>
+        </ShopingContextProvider>
+
     );
 }
 

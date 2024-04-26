@@ -4,9 +4,8 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../types/ListRoute";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Signup">;
 
-export const SignUpPage: FC<HomeScreenProps> = (props) => {
+export const SignUpPage: FC = (props) => {
     return (
         <SafeAreaView className="flex-1 bg-white">
             <View className="flex-1 flex justify-around my-4">

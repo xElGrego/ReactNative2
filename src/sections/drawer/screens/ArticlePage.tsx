@@ -1,18 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { FC } from "react";
 import { SafeAreaView, View, Text, TouchableOpacity } from "react-native";
-import { RootStackParamList } from "../../../../types/ListRoute";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 
-type TabPage2NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ArticlePage'>;
 
-export const ArticlePage: FC = () => {
-
-    const navigation = useNavigation<TabPage2NavigationProp>();
+export const ArticlePage: FC = (props: any) => {
 
     const goBack = () => {
-        navigation.navigate("Home");
+        props.navigation.navigate("Home");
     }
 
     return (

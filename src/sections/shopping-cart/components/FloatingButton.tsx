@@ -10,7 +10,6 @@ interface FloatingButtonProps {
 export const FloatingButton: React.FC<FloatingButtonProps> = ({ onPress }) => {
     const { cantItems } = useShopingContext();
 
-
     return (
         <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
             <View>
@@ -25,8 +24,8 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: 'absolute',
         bottom: 20,
-        right: 20,
-        backgroundColor: 'black',
+        left: 20,
+        backgroundColor: '#F59E0B',
         width: 50,
         height: 50,
         borderRadius: 25,

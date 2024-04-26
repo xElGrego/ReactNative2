@@ -10,6 +10,8 @@ interface ContextState {
     updateProductQuantity: (productId: string, quantity: number) => void;
     loading: boolean;
     cantItems: number;
+    productsSelected: Product[];
+    removeProduct: (productId: string) => void
 }
 
 export const ShopingContext = React.createContext({} as ContextState);
@@ -20,6 +22,7 @@ export const ShopingContextProvider = ({
 }: React.PropsWithChildren<{ repository: ShopingRepository }>) => {
 
     const [products, setProducts] = useState<Product[]>([]);
+    const [productsSelected, setProductsSelected] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [productQuantities, setProductQuantities] = useState<{ [productId: string]: number }>({});
     const [cantItems, setCantItems] = useState<number>(0);
@@ -30,6 +33,7 @@ export const ShopingContextProvider = ({
         setProducts(clientes);
         setLoading(false);
     }
+
     useEffect(() => {
         getProducts();
     }, []);
@@ -39,8 +43,26 @@ export const ShopingContextProvider = ({
             ...prevQuantities,
             [productId]: quantity
         }));
-        const uniqueProducts = Object.keys(productQuantities).length;
+        const uniqueProducts = Object.keys(productQuantities).length + 1;
         setCantItems(uniqueProducts);
+
+        const productToAdd = products.find(product => product.idProducto.toString() === productId);
+        if (productToAdd) {
+            addProductToSelected(productToAdd);
+        }
+    };
+
+    const addProductToSelected = (product: Product) => {
+        const productExists = productsSelected.some(selectedProduct => selectedProduct.idProducto.toString() === product.idProducto.toString());
+        if (!productExists) {
+            setProductsSelected(prevProductsSelected => [...prevProductsSelected, product]);
+        }
+    };
+
+    const removeProduct = (productId: string) => {
+        setProductsSelected(prevProductsSelected =>
+            prevProductsSelected.filter(selectedProduct => selectedProduct.idProducto.toString() !== productId)
+        );
     };
 
     const storage: ContextState = {
@@ -49,7 +71,9 @@ export const ShopingContextProvider = ({
         getProducts,
         loading,
         updateProductQuantity,
-        cantItems
+        cantItems,
+        productsSelected,
+        removeProduct
     };
 
     return (

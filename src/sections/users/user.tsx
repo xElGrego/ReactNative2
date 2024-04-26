@@ -8,9 +8,8 @@ import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../types/ListRoute";
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "User">;
 
-export const UserPage: FC<HomeScreenProps> = (props) => {
+export const UserPage: FC = (props: any) => {
     const repository = createUserAsyncStorage();
     return (
         <UserContextProvider repository={repository}>

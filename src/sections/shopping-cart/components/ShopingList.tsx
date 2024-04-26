@@ -4,7 +4,7 @@ import { Product } from '../../../modules/shopping-cart/domain/Product';
 import { useShopingContext } from "../context/ShopingContext";
 
 export const ShopingList: FC = () => {
-    const { products, productQuantities, loading, updateProductQuantity } = useShopingContext();
+    const { products, productQuantities, updateProductQuantity } = useShopingContext();
 
     const renderProductItem = ({ item }: { item: Product }) => (
         <View style={styles.productItem}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     productPrice: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'green',
     },
     button: {

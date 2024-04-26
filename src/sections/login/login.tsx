@@ -5,9 +5,8 @@ import { RootStackParamList } from "../../../types/ListRoute";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
-export const LoginPage: FC<HomeScreenProps> = (props) => {
+export const LoginPage: FC = (props: any) => {
     return (
         <View className="flex-1 bg-white">
             <SafeAreaView className="flex">

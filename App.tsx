@@ -15,7 +15,7 @@ import "./styles.css";
 import { BottonNavPage } from './src/sections/botton-navigation/BottonNavigation';
 import { ShopingPage } from './src/sections/shopping-cart/shoping';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
