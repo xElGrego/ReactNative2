@@ -95,6 +95,7 @@ export const UserList: FC = () => {
                             <DataTable.Header>
                                 <DataTable.Title style={{ flex: 0.5 }}>Id</DataTable.Title>
                                 <DataTable.Title style={{ flex: 1.5 }}>Nombre</DataTable.Title>
+                                <DataTable.Title style={{ flex: 1.5 }}>Apellido</DataTable.Title>
                                 <DataTable.Title style={{ flex: 0.5 }}>Edad</DataTable.Title>
                                 <DataTable.Title style={{ flex: 0.8 }} > </DataTable.Title>
                             </DataTable.Header>
@@ -102,6 +103,7 @@ export const UserList: FC = () => {
                                 <DataTable.Row key={item.idUser}>
                                     <DataTable.Cell style={{ flex: 0.5 }}>{1}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 1.5 }}>{item.nombre}</DataTable.Cell>
+                                    <DataTable.Cell style={{ flex: 1.5 }}>{item.apellido}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 0.5 }}>{item.edad}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 0.8 }} className="justify-center items-center">
                                         <SelectDropdown
@@ -190,7 +192,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         flexDirection: 'row',
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 1,
@@ -198,7 +200,7 @@ const styles = StyleSheet.create({
     },
     dropdownItemTxtStyle: {
         flex: 1,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: '500',
         textAlign: 'center',
     },

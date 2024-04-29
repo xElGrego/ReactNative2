@@ -1,11 +1,12 @@
-import React, { FC, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { FC, useEffect, useState } from "react";
+import { View, Text, TouchableOpacity, Button } from "react-native";
 import { useForm, FormProvider } from "react-hook-form";
 import { User } from "../../../modules/users/domain/User";
 import { useUserForm } from "../hooks/useUserForm";
 import { useUserContext } from "../context/UserContext";
 import { TextInputForm } from "../../../shared/components/inputs/InputForm";
 import { NumericInput } from "../../../shared/components/inputs/InputNumericForm";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export const UserForm: FC = () => {
     const { control, setValue, handleSubmit, formState: { errors } } = useForm<User>();
@@ -15,6 +16,7 @@ export const UserForm: FC = () => {
     const initialStateForm: User = {
         nombre: "",
         edad: 0,
+        apellido: ""
     };
 
     const methods = useForm<User>({
@@ -45,6 +47,29 @@ export const UserForm: FC = () => {
         }
     }, [idUser]);
 
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+
+    const onChange = (event: any, selectedDate: any) => {
+        const currentDate = selectedDate;
+        setShow(false);
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode: string) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
+
     return (
         <FormProvider {...methods}>
             <View className="flex">
@@ -55,6 +80,15 @@ export const UserForm: FC = () => {
                         control={control}
                         rules={{ required: 'El nombre es requerido' }}
                         placeholder="Ingrese su nombre"
+                    />
+                </View>
+                <View className="form mb-4">
+                    <Text className="text-xs text-gray-700">Apellido</Text>
+                    <TextInputForm
+                        name="apellido"
+                        control={control}
+                        rules={{ required: 'El apellido es requerido' }}
+                        placeholder="Ingrese su apellido"
                     />
                 </View>
                 <View className="form mb-4">
@@ -71,6 +105,20 @@ export const UserForm: FC = () => {
                         }}
                         placeholder="Ingrese su edad"
                     />
+                </View>
+                <View className="form mb-4">
+                    <Text className="text-xs text-gray-700">Fecha de Nacimiento</Text>
+                    <Button onPress={showDatepicker} title="Show date picker!" />
+                    <Text>selected: {date.toLocaleString()}</Text>
+                    {show && (
+                        <DateTimePicker
+                            testID="dateTimePicker"
+                            value={date}
+                            mode={"date"}
+                            is24Hour={true}
+                            onChange={onChange}
+                        />
+                    )}
                 </View>
                 <View className="flex-row gap-2 justify-end items-center">
                     <TouchableOpacity
