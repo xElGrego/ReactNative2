@@ -3,5 +3,5 @@ export interface User {
     nombre: string;
     edad: number;
     apellido: string;
-    fechaNacimiento?: string;
+    fechaNacimiento?: Date;
 }

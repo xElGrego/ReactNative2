@@ -20,7 +20,7 @@ export const TextInputForm: React.FC<Props> = ({ name, control, rules, placehold
                     <View style={[{ borderColor: error ? 'red' : '#e8e8e8' }]}>
                         <TextInput
                             className={`pl-2 border-b border-l ${!error ? "border-gray-400" : "border-red-500"}`}
-                            onChangeText={(text) => onChange(text)}
+                            onChangeText={onChange}
                             value={value}
                             onBlur={onBlur}
                             placeholder={placeholder}

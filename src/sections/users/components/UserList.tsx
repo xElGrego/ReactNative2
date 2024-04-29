@@ -97,7 +97,8 @@ export const UserList: FC = () => {
                                 <DataTable.Title style={{ flex: 1.5 }}>Nombre</DataTable.Title>
                                 <DataTable.Title style={{ flex: 1.5 }}>Apellido</DataTable.Title>
                                 <DataTable.Title style={{ flex: 0.5 }}>Edad</DataTable.Title>
-                                <DataTable.Title style={{ flex: 0.8 }} > </DataTable.Title>
+                                <DataTable.Title style={{ flex: 1.5 }}>Fecha</DataTable.Title>
+                                <DataTable.Title style={{ flex: 0.5 }} > </DataTable.Title>
                             </DataTable.Header>
                             {users.map((item) => (
                                 <DataTable.Row key={item.idUser}>
@@ -105,6 +106,7 @@ export const UserList: FC = () => {
                                     <DataTable.Cell style={{ flex: 1.5 }}>{item.nombre}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 1.5 }}>{item.apellido}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 0.5 }}>{item.edad}</DataTable.Cell>
+                                    <DataTable.Cell style={{ flex: 0.5 }}>{item.fechaNacimiento?.toString()}</DataTable.Cell>
                                     <DataTable.Cell style={{ flex: 0.8 }} className="justify-center items-center">
                                         <SelectDropdown
                                             data={emojisWithIcons}

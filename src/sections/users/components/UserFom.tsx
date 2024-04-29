@@ -7,16 +7,20 @@ import { useUserContext } from "../context/UserContext";
 import { TextInputForm } from "../../../shared/components/inputs/InputForm";
 import { NumericInput } from "../../../shared/components/inputs/InputNumericForm";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { DateTimeInputForm } from "../../../shared/components/inputs/InputDateForm";
 
 export const UserForm: FC = () => {
     const { control, setValue, handleSubmit, formState: { errors } } = useForm<User>();
     const { submitUser, updateUser } = useUserForm();
     const { setVisible, users, idUser } = useUserContext();
 
+    const [datex, setDate] = useState(new Date());
+
     const initialStateForm: User = {
         nombre: "",
         edad: 0,
-        apellido: ""
+        apellido: "",
+        fechaNacimiento: new Date()
     };
 
     const methods = useForm<User>({
@@ -29,6 +33,8 @@ export const UserForm: FC = () => {
             await updateUser(updatedUser);
             setVisible(false);
         } else {
+            data.fechaNacimiento = datex;
+            console.log("User submit", data);
             await submitUser(data);
             setVisible(false);
         }
@@ -40,34 +46,17 @@ export const UserForm: FC = () => {
                 (m) => m.idUser === idUser
             );
             if (user) {
+                console.log("User", user)
                 setValue("nombre", user.nombre);
+                setValue("apellido", user.apellido);
                 setValue("edad", Number(user.edad));
-                //methods.reset(user);
+                setValue("fechaNacimiento", user.fechaNacimiento);
             }
         }
     }, [idUser]);
 
-    const [date, setDate] = useState(new Date(1598051730000));
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-
-    const onChange = (event: any, selectedDate: any) => {
-        const currentDate = selectedDate;
-        setShow(false);
-        setDate(currentDate);
-    };
-
-    const showMode = (currentMode: string) => {
-        setShow(true);
-        setMode(currentMode);
-    };
-
-    const showDatepicker = () => {
-        showMode('date');
-    };
-
-    const showTimepicker = () => {
-        showMode('time');
+    const handleDateChange = (newDate: Date) => {
+        setDate(newDate);
     };
 
     return (
@@ -107,18 +96,13 @@ export const UserForm: FC = () => {
                     />
                 </View>
                 <View className="form mb-4">
-                    <Text className="text-xs text-gray-700">Fecha de Nacimiento</Text>
-                    <Button onPress={showDatepicker} title="Show date picker!" />
-                    <Text>selected: {date.toLocaleString()}</Text>
-                    {show && (
-                        <DateTimePicker
-                            testID="dateTimePicker"
-                            value={date}
-                            mode={"date"}
-                            is24Hour={true}
-                            onChange={onChange}
-                        />
-                    )}
+                    <Text className="text-xs text-gray-700">Fecha</Text>
+                    <DateTimeInputForm
+                        name="fechaNacimiento"
+                        onChange={handleDateChange}
+                        control={control}
+                        placeholder="Fecha"
+                    />
                 </View>
                 <View className="flex-row gap-2 justify-end items-center">
                     <TouchableOpacity
